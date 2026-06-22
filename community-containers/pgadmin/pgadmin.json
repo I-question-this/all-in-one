@@ -1,0 +1,39 @@
+{
+    "aio_services_v1": [
+        {
+            "container_name": "nextcloud-aio-pgadmin",
+            "display_name": "Pgadmin",
+            "documentation": "https://github.com/nextcloud/all-in-one/tree/main/community-containers/pgadmin",
+            "image": "dpage/pgadmin4",
+            "image_tag": "7",
+            "internal_port": "5050",
+            "restart": "unless-stopped",
+            "ports": [
+                {
+                  "ip_binding": "%APACHE_IP_BINDING%",
+                  "port_number": "5050",
+                  "protocol": "tcp"
+                }
+            ],
+            "environment": [
+                "TZ=%TIMEZONE%",
+                "PGADMIN_DEFAULT_EMAIL=admin@%NC_DOMAIN%",
+                "PGADMIN_LISTEN_PORT=5050",
+                "PGADMIN_DEFAULT_PASSWORD=%INITIAL_PG_ADMIN_PASSWORD%"
+            ],
+            "secrets": [
+                  "INITIAL_PG_ADMIN_PASSWORD"
+	    ],
+            "volumes": [
+                {
+                    "source": "nextcloud_aio_pgadmin",
+                    "destination": "/var/lib/pgadmin",
+                    "writeable": true
+                }
+            ],
+            "backup_volumes": [
+                "nextcloud_aio_pgadmin"
+            ]
+        }
+    ]
+}
