@@ -2,7 +2,7 @@
     "aio_services_v1": [
         {
             "container_name": "nextcloud-aio-pgadmin",
-            "display_name": "Pgadmin",
+            "display_name": "pgAdmin",
             "documentation": "https://github.com/nextcloud/all-in-one/tree/main/community-containers/pgadmin",
             "image": "dpage/pgadmin4",
             "image_tag": "7",
